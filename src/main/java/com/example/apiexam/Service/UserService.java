@@ -20,11 +20,11 @@ public class UserService {
     public Iterable<User> getAllUsers(){
         return userRepository.findAll();
     }
-    public User getUser(List<User> users, Long userId){
-        getAllUsers().forEach(users::add);
-        for(User u: users){
-            if(u.getId() == userId){
-                return u;
+    public User getUser(Long userId){
+        while(getAllUsers().iterator().hasNext()){
+            User user = getAllUsers().iterator().next();
+            if (user.getId() == userId){
+                return user;
             }
         }
         return null;

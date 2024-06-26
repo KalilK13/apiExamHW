@@ -19,4 +19,13 @@ public class CommentService {
     public Iterable<Comment> getAllComments(){
         return commentRepository.findAll();
     }
+    public Comment getComment(Long commentId){
+        while (getAllComments().iterator().hasNext()){
+            Comment comment = getAllComments().iterator().next();
+            if (comment.getId() == commentId){
+                return comment;
+            }
+        }
+        return null;
+    }
 }

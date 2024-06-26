@@ -21,11 +21,11 @@ public class PostService {
     public Iterable<Post> getAllPosts(){
         return postRepository.findAll();
     }
-    public Post getPost(List<Post> users, Long postId){
-        getAllPosts().forEach(users::add);
-        for(Post p: users){
-            if(p.getId() == postId){
-                return p;
+    public Post getPost(Long postId){
+        while(getAllPosts().iterator().hasNext()){
+            Post post = getAllPosts().iterator().next();
+            if (post.getId() == postId){
+                return post;
             }
         }
         return null;
